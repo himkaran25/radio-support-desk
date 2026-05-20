@@ -1,208 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Independent Radio Support & Activation Assistance</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FontAwesome Icons for UI -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary-blue: #0056b3;
-            --dark-bg: #0f172a;
-            --accent-green: #198754;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-            background-color: #f8f9fa;
-        }
-        .hero-section {
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e293b 100%);
-            color: white;
-            padding: 100px 0 80px 0;
-        }
-        .phone-btn {
-            background-color: var(--accent-green);
-            color: white;
-            font-size: 1.8rem;
-            font-weight: 700;
-            padding: 15px 30px;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(25, 135, 84, 0.4);
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-decoration: none;
-        }
-        .phone-btn:hover {
-            background-color: #157347;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(25, 135, 84, 0.6);
-        }
-        .bov-disclosure-box {
-            font-size: 0.9rem;
-            background-color: rgba(255, 193, 7, 0.1);
-            border-left: 4px solid #ffc107;
-            color: #f8fafc;
-        }
-        .feature-card {
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-        .sticky-call-bar {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: var(--dark-bg);
-            color: white;
-            padding: 15px 0;
-            z-index: 1050;
-            box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RadiantXM Helpdesk</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #0b1020;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      color: #00d4ff !important;
+      font-size: 1.5rem;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      position: relative;
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero-content h1 span {
+      color: #00d4ff;
+    }
+
+    .hero-content p {
+      color: #d6d6d6;
+      font-size: 1.1rem;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    .call-box {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    .phone-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #00ffb7;
+      margin: 20px 0;
+    }
+
+    .btn-call {
+      background: linear-gradient(45deg, #00d4ff, #00ffb7);
+      border: none;
+      color: #000;
+      font-weight: 600;
+      padding: 14px 30px;
+      border-radius: 50px;
+      transition: 0.3s ease;
+    }
+
+    .btn-call:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+    }
+
+    .feature-card {
+      background: #141b34;
+      border-radius: 18px;
+      padding: 30px;
+      transition: 0.3s ease;
+      height: 100%;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      background: #1a2242;
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #00d4ff;
+    }
+
+    .stats {
+      background: linear-gradient(90deg, #00d4ff, #00ffb7);
+      color: #000;
+      padding: 60px 0;
+    }
+
+    .counter {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .footer {
+      background: #050814;
+      padding: 30px 0;
+      text-align: center;
+      color: #aaa;
+    }
+
+    @media(max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .phone-number {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
-<body class="pb-5">
+<body>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">
-                <i class="fa-solid fa-headset me-2 text-warning"></i>Radio Support Desk
-            </a>
-            <div class="ms-auto d-none d-md-block">
-                <a href="tel:+16565562291" class="btn btn-outline-warning fw-bold">
-                    <i class="fa-solid fa-phone me-2"></i>(656) 556-2291
-                </a>
-            </div>
-        </div>
-    </nav>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">RadiantXM Helpdesk</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <!-- Hero Section -->
-    <header class="hero-section text-center text-md-start">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <!-- MANDATORY GOOGLE ADS COMPLIANCE DISCLOSURE -->
-                    <div class="bov-disclosure-box p-3 mb-4 rounded">
-                        <p class="m-0">
-                            <strong>Disclaimer:</strong> We are an independent, third-party support and service configuration provider for satellite radio equipment. We are not an official partner, joint venture, or directly affiliated with SiriusXM. For official direct support, please visit the primary provider's official domain.
-                        </p>
-                    </div>
-                    
-                    <h1 class="display-4 fw-bold mb-3">Independent Satellite Radio Setup & Help Desk</h1>
-                    <p class="lead mb-4 text-light">Need help configuring your vehicle's factory radio, renewing standard plans, troubleshooting signal dropout errors, or updating account settings? Speak with an agent immediately.</p>
-                    
-                    <div class="my-4 text-center text-md-start">
-                        <p class="text-uppercase tracking-wider small fw-bold text-warning mb-2">Connect to a Support Specialist Now</p>
-                        <a href="tel:+16565562291" class="phone-btn">
-                            <i class="fa-solid fa-phone-volume me-2"></i>(656) 556-2291
-                        </a>
-                        <p class="small text-muted mt-2">Available for Device Troubleshooting & Subscription Setup Assistance</p>
-                    </div>
-                </div>
-                <div class="col-lg-5 d-none d-lg-block text-center">
-                    <i class="fa-solid fa-screwdriver-wrench text-secondary opacity-25" style="font-size: 14rem;"></i>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Common Issues Solved Section -->
-    <main class="container my-5 py-4">
-        <h2 class="text-center fw-bold mb-5">Common Radio Configuration Issues We Handle</h2>
-        <div class="row g-4 text-center">
-            <div class="col-md-4">
-                <div class="card h-100 p-4 feature-card">
-                    <div class="card-body">
-                        <i class="fa-solid fa-tower-broadcast fa-3x text-primary mb-3"></i>
-                        <h3 class="h5 fw-bold">Signal Refresh & Errors</h3>
-                        <p class="text-muted small">Troubleshooting "No Signal", "Check Antenna", or hanging loading animations by managing hardware initialization cycles.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 p-4 feature-card">
-                    <div class="card-body">
-                        <i class="fa-solid fa-car fa-3x text-primary mb-3"></i>
-                        <h3 class="h5 fw-bold">Radio ESN/Radio ID Recovery</h3>
-                        <p class="text-muted small">Step-by-step assistance locating your unique Electronic Serial Number on factory dashboards via channel configurations.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 p-4 feature-card">
-                    <div class="card-body">
-                        <i class="fa-solid fa-user-gear fa-3x text-primary mb-3"></i>
-                        <h3 class="h5 fw-bold">Subscription Setup Support</h3>
-                        <p class="text-muted small">Assisting vehicle purchasers or current subscribers in transferring, establishing, or re-linking audio subscription packages.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Business Operations Verification Footer Block -->
-    <footer class="bg-dark text-light pt-5 pb-5">
-        <div class="container">
-            <div class="row g-4 border-bottom border-secondary pb-4">
-                <div class="col-md-6">
-                    <h5 class="fw-bold text-warning">Business Operations Transparency</h5>
-                    <p class="small text-muted">
-                        This service is provided by <strong>[Your Registered LLC / Business Corporate Name Here]</strong>, a fully separate corporate entity located at <strong>[Your Physical Business Mailing Address Here]</strong>. We function as a third-party assistance provider helping consumers configure consumer audio electronics setups.
-                    </p>
-                    <p class="small text-muted">
-                        For direct internal inquiries regarding our verification compliance, corporate identity, or service scope, contact us directly at <strong>support@yourdomain.com</strong> or call our administration line at <strong>(656) 556-2291</strong>.
-                    </p>
-                </div>
-                <div class="col-md-3">
-                    <h5 class="fw-bold text-white small text-uppercase">Compliance Resources</h5>
-                    <ul class="list-unstyled small">
-                        <li><a href="#privacy" class="text-muted text-decoration-none" onclick="alert('Link your standalone Privacy Policy page here.')">Privacy Policy</a></li>
-                        <li><a href="#terms" class="text-muted text-decoration-none" onclick="alert('Link your standalone Terms of Service page here.')">Terms of Service</a></li>
-                        <li><a href="#disclaimer" class="text-muted text-decoration-none" onclick="alert('Link your standalone Third-Party Disclaimer here.')">Third-Party Disclaimer</a></li>
-                        <li><a href="#contact" class="text-muted text-decoration-none" onclick="alert('Link your physical corporate Contact info here.')">Contact Info</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h5 class="fw-bold text-white small text-uppercase">Assistance Desk Hours</h5>
-                    <p class="small text-muted m-0">Monday - Friday: 9:00 AM - 9:00 PM EST<br>Saturday: 10:00 AM - 6:00 PM EST<br>Sunday: Closed</p>
-                </div>
-            </div>
-            <div class="row pt-4">
-                <div class="col text-center text-muted col-12">
-                    <p class="small m-0">&copy; 2026 Radio Support Desk & [Your LLC Name]. All rights reserved. Brand names, logos, or active trademarks mentioned across this informational presentation belong entirely to their respective trademark holders.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Mobile Sticky Call-to-Action Bar -->
-    <div class="sticky-call-bar d-block d-md-none text-center">
-        <div class="container d-flex justify-content-between align-items-center px-4">
-            <span class="small fw-bold text-truncate me-2">Independent Help Desk:</span>
-            <a href="tel:+16565562291" class="btn btn-success fw-bold px-3 py-2 btn-sm">
-                <i class="fa-solid fa-phone me-1"></i> Call Now
-            </a>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#support">Support</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- Bootstrap 5 Bundle with Popper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- JavaScript Event Tracking Hook -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            console.log("Third-party verification framework stabilized.");
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+
+        <div class="col-lg-7">
+          <div class="hero-content">
+            <h1>Professional <span>Audio Service</span> Assistance</h1>
+            <p>
+              Independent customer assistance for audio streaming guidance, account help, subscription information, and general technical support.
+            </p>
+
+            <a href="tel:6565562291" class="btn btn-call btn-lg">
+              Call Now
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="call-box text-center">
+            <h3>Independent Customer Helpdesk</h3>
+            <div class="phone-number">(656) 556-2291</div>
+            <p>
+              Connect with an independent support representative for general assistance and guidance.
+            </p>
+
+            <a href="tel:6565562291" class="btn btn-call w-100">
+              Dial (656) 556-2291
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-5" id="features">
+    <div class="container py-5">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Why Choose Our Support</h2>
+        <p class="text-light-emphasis">Reliable and fast customer assistance whenever you need it.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="feature-card text-center">
+            <div class="feature-icon">📞</div>
+            <h4>Instant Call Support</h4>
+            <p>Connect quickly with experienced support specialists.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-card text-center">
+            <div class="feature-icon">⚡</div>
+            <h4>Fast Solutions</h4>
+            <p>Helpful guidance for common account and streaming questions.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-card text-center">
+            <div class="feature-icon">🔒</div>
+            <h4>Secure Assistance</h4>
+            <p>Professional and secure customer communication support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="counter" data-target="5000">0</div>
+          <h5>Happy Customers</h5>
+        </div>
+
+        <div class="col-md-4">
+          <div class="counter" data-target="24">0</div>
+          <h5>Hours Support</h5>
+        </div>
+
+        <div class="col-md-4">
+          <div class="counter" data-target="99">0</div>
+          <h5>% Satisfaction</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="py-5" id="contact">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="fw-bold mb-4">Need Immediate Help?</h2>
+          <p class="mb-4 text-light-emphasis">
+            Our independent helpdesk provides general assistance and customer guidance services.
+          </p>
+
+          <a href="tel:6565562291" class="btn btn-call btn-lg px-5 py-3">
+            Call (656) 556-2291
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="mb-1">© 2026 RadiantXM Helpdesk | Independent Support Service Landing Page</p>
+      <small>This website is an independent support service and is not affiliated with SiriusXM.</small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript Counter Animation -->
+  <script>
+    const counters = document.querySelectorAll('.counter');
+
+    counters.forEach(counter => {
+      counter.innerText = '0';
+
+      const updateCounter = () => {
+        const target = +counter.getAttribute('data-target');
+        const current = +counter.innerText;
+
+        const increment = target / 100;
+
+        if (current < target) {
+          counter.innerText = `${Math.ceil(current + increment)}`;
+          setTimeout(updateCounter, 20);
+        } else {
+          counter.innerText = target;
+        }
+      };
+
+      updateCounter();
+    });
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
         });
-    </script>
+      });
+    });
+  </script>
+
 </body>
 </html>
